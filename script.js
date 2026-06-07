@@ -14,6 +14,7 @@ function createAndAppendSearchResults(result) {
         let resultItemEl = document.createElement("div");
         resultItemEl.classList.add("result-item");
 
+      
         let titleEl = document.createElement("a");             
         titleEl.href = link;
         titleEl.target = "_blank";                   
@@ -23,6 +24,8 @@ function createAndAppendSearchResults(result) {
 
         let titleBreakEl = document.createElement("br");
         resultItemEl.appendChild(titleBreakEl);
+
+        
 
         let urlEl = document.createElement("a");
         urlEl.href = link;
@@ -34,19 +37,24 @@ function createAndAppendSearchResults(result) {
         let linkBreakEl= document.createElement("br");
         resultItemEl.appendChild(linkBreakEl);
 
+        
+
         let descEl = document.createElement("p");
         descEl.classList.add("link-desc");
         descEl.textContent = description;
         resultItemEl.appendChild(descEl);
 
         searchResultsEl.appendChild(resultItemEl);
+
 }
 
 function displayResults(searchResults) {
     spinnerEl.classList.add("d-none");
     for(let result of searchResults) {
         createAndAppendSearchResults(result);
+       
     }
+    
 }
 
 function searchWikipedia(event) {
@@ -55,7 +63,7 @@ function searchWikipedia(event) {
         spinnerEl.classList.remove("d-none");
         searchResultsEl.textContent = "";
         
-        let searchInput = searchInputEl.value;
+        let searchInput = searchInputEl.value;//users search result item
         let url = "https://apis.ccbp.in/wiki-search?search=" + searchInput;
         let options = { 
             method :"GET"
@@ -71,5 +79,4 @@ function searchWikipedia(event) {
     }
 }
 
-       
 searchInputEl.addEventListener("keydown",searchWikipedia);
